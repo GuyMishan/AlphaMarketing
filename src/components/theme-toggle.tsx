@@ -9,7 +9,7 @@ export function ThemeToggle() {
     const saved = localStorage.getItem("alpha-theme");
     const useDark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
     document.documentElement.dataset.theme = useDark ? "dark" : "light";
-    setDark(useDark);
+    requestAnimationFrame(() => setDark(useDark));
   }, []);
 
   function toggle() {
