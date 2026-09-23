@@ -2,39 +2,70 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { ArrowLeft, BadgeCheck, Building2, CheckCircle2, CircleDollarSign, FileCheck2, FileCode2, FileSpreadsheet, Gauge, Layers3, LockKeyhole, MessagesSquare, RefreshCw, ScanLine, ShieldCheck, Sparkles, Upload, UsersRound, WalletCards, WandSparkles, Zap } from "lucide-react";
+import { ArrowLeft, BadgeCheck, Building2, CheckCircle2, CircleDollarSign, FileCheck2, FileCode2, FileSpreadsheet, Gauge, LockKeyhole, MessagesSquare, RefreshCw, ScanLine, ShieldCheck, Sparkles, Upload, UsersRound, WalletCards, WandSparkles, Zap } from "lucide-react";
 import { AlphaLogo } from "@/components/logo";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { AccessibilityWidget } from "@/components/accessibility-widget";
 import { ContactModal } from "@/components/contact-modal";
 import { DashboardPreview } from "@/components/dashboard-preview";
+import { AudienceShowcase } from "@/components/audience-showcase";
+import { DeviceShowcase } from "@/components/device-showcase";
+import { BackToTop } from "@/components/back-to-top";
 
 const appUrl=process.env.NEXT_PUBLIC_APP_URL || "https://alpha-ochre-ten.vercel.app";
 
+const navItems=[
+  {id:"audience",label:"למי זה מתאים"},
+  {id:"product",label:"המוצר"},
+  {id:"showcase",label:"המערכת"},
+  {id:"how",label:"איך זה עובד"},
+  {id:"security",label:"אבטחה"},
+  {id:"faq",label:"שאלות"},
+];
+
 export function LandingPage() {
   const [contactOpen,setContactOpen]=useState(false);
+  const [activeSection,setActiveSection]=useState("");
   const open=()=>setContactOpen(true);
 
   useEffect(()=>{
-    const observer=new IntersectionObserver((entries)=>{
+    const revealObserver=new IntersectionObserver((entries)=>{
       entries.forEach(entry=>{
         if(entry.isIntersecting) entry.target.classList.add("is-visible");
       });
-    },{threshold:.16});
-    document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
-    return ()=>observer.disconnect();
+    },{threshold:.14});
+    document.querySelectorAll(".reveal").forEach(el=>revealObserver.observe(el));
+
+    const sectionObserver=new IntersectionObserver((entries)=>{
+      const visible=entries
+        .filter(entry=>entry.isIntersecting)
+        .sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+      if(visible?.target.id) setActiveSection(visible.target.id);
+    },{rootMargin:"-22% 0px -58% 0px",threshold:[0,.2,.45,.7]});
+    navItems.forEach(item=>{
+      const el=document.getElementById(item.id);
+      if(el) sectionObserver.observe(el);
+    });
+
+    return ()=>{
+      revealObserver.disconnect();
+      sectionObserver.disconnect();
+    };
   },[]);
 
   return <div className="site-shell">
+    <div className="ambient-background" aria-hidden="true">
+      <span className="ambient-blob ambient-one"/>
+      <span className="ambient-blob ambient-two"/>
+      <span className="ambient-blob ambient-three"/>
+      <span className="ambient-blob ambient-four"/>
+    </div>
+
     <header className="site-header">
       <div className="container nav">
-        <a className="nav-brand" href="#top"><AlphaLogo/></a>
+        <a className="nav-brand" href="#top" aria-label="ALPHA - חזרה לראש העמוד"><AlphaLogo/></a>
         <nav className="nav-links" aria-label="ניווט ראשי">
-          <a href="#product"><span/>המוצר</a>
-          <a href="#how"><span/>איך זה עובד</a>
-          <a href="#audience"><span/>למי זה מתאים</a>
-          <a href="#security"><span/>אבטחה</a>
-          <a href="#faq"><span/>שאלות</a>
+          {navItems.map(item=><a key={item.id} className={activeSection===item.id?"active":""} href={"#"+item.id}><span/>{item.label}</a>)}
         </nav>
         <div className="nav-actions">
           <ThemeToggle/>
@@ -64,22 +95,20 @@ export function LandingPage() {
         <DashboardPreview/>
       </section>
 
-      <section id="audience" className="section-tight reveal">
-        <div className="container" style={{textAlign:"center"}}>
-          <span className="eyebrow">מערכת אחת. לכל מי שמפעיל פנסיה.</span>
-          <div className="logo-strip">
-            {[
-              [Building2,"מעסיקים"],[FileSpreadsheet,"מנהלי חשבונות"],[BadgeCheck,"חשבי שכר"],
-              [Layers3,"ארגונים"],[UsersRound,"קבוצות מעסיקים"],[ShieldCheck,"מתפעלים פנסיוניים"]
-            ].map(([Icon,label])=>{
-              const C=Icon as typeof Building2;
-              return <span className="audience-pill" key={String(label)}><C size={16}/>{label as string}</span>;
-            })}
+      <section id="audience" className="section section-large audience-section">
+        <div className="section-aurora aurora-right"/>
+        <div className="container">
+          <div className="reveal section-heading-centered">
+            <span className="eyebrow"><UsersRound size={14}/>למי זה מתאים</span>
+            <h2 className="section-title">ALPHA מתאימה למי שעובד<br/>עם פנסיה ביום־יום.</h2>
+            <p className="section-copy centered">לא משנה אם אתם מעסיק קטן, חשבי שכר או ארגון שמנהל מספר חברות — המערכת משנה את נקודת המבט בהתאם למי שמשתמש בה.</p>
           </div>
+          <div className="reveal"><AudienceShowcase/></div>
         </div>
       </section>
 
-      <section id="product" className="section">
+      <section id="product" className="section section-large product-section">
+        <div className="section-aurora aurora-left"/>
         <div className="container">
           <div className="reveal">
             <span className="eyebrow"><Zap size={14}/>פחות תפעול. יותר שליטה.</span>
@@ -96,7 +125,14 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section className="section visual-story">
+      <section id="showcase" className="section section-large showcase-section">
+        <div className="section-aurora aurora-center"/>
+        <div className="container">
+          <div className="reveal"><DeviceShowcase/></div>
+        </div>
+      </section>
+
+      <section className="section section-large visual-story">
         <div className="container visual-story-grid">
           <div className="reveal">
             <span className="eyebrow"><WandSparkles size={14}/>המערכת עובדת איתכם</span>
@@ -115,7 +151,7 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section id="how" className="section flow-section">
+      <section id="how" className="section section-large flow-section">
         <div className="container">
           <div className="reveal">
             <span className="eyebrow">איך זה עובד</span>
@@ -129,7 +165,8 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section id="security" className="section">
+      <section id="security" className="section section-large security-section">
+        <div className="section-aurora aurora-right"/>
         <div className="container security-grid">
           <div className="reveal">
             <span className="eyebrow"><ShieldCheck size={14}/>בנויה לעבודה רצינית</span>
@@ -145,7 +182,7 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section className="section-tight">
+      <section className="section section-large cta-section">
         <div className="container reveal">
           <div className="cta-panel">
             <div className="cta-spark spark-a"/><div className="cta-spark spark-b"/>
@@ -156,7 +193,7 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section id="faq" className="section">
+      <section id="faq" className="section section-large faq-section">
         <div className="container reveal">
           <span className="eyebrow">שאלות נפוצות</span>
           <h2 className="section-title">לפני שמתחילים.</h2>
@@ -175,7 +212,7 @@ export function LandingPage() {
       <div className="container">
         <div className="footer-grid">
           <div><AlphaLogo/><p>מערכת חכמה לניהול ותפעול דיווחים פנסיוניים למעסיקים וארגונים.</p><p><a href="mailto:Alphapensia@gmail.com">Alphapensia@gmail.com</a></p></div>
-          <div><b>ALPHA</b><div className="footer-links"><a href="#product">המוצר</a><a href="#how">איך זה עובד</a><a href="#faq">שאלות נפוצות</a><a href={appUrl + "/login"}>כניסה למערכת</a></div></div>
+          <div><b>ALPHA</b><div className="footer-links"><a href="#audience">למי זה מתאים</a><a href="#product">המוצר</a><a href="#showcase">המערכת</a><a href="#how">איך זה עובד</a><a href="#faq">שאלות נפוצות</a><a href={appUrl + "/login"}>כניסה למערכת</a></div></div>
           <div><b>מידע משפטי</b><div className="footer-links"><Link href="/terms">תקנון ותנאי שימוש</Link><Link href="/privacy">מדיניות פרטיות</Link><Link href="/accessibility">הצהרת נגישות</Link></div></div>
         </div>
         <div className="footer-bottom"><span>© {new Date().getFullYear()} ALPHA. כל הזכויות שמורות.</span><span>תפעול פנסיוני, פשוט יותר.</span></div>
@@ -183,6 +220,7 @@ export function LandingPage() {
     </footer>
 
     <AccessibilityWidget/>
+    <BackToTop/>
     <ContactModal open={contactOpen} onClose={()=>setContactOpen(false)}/>
   </div>;
 }
