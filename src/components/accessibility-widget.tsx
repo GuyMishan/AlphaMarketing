@@ -12,7 +12,7 @@ export function AccessibilityWidget() {
   useEffect(()=>{
     const raw=localStorage.getItem("alpha-a11y");
     if(raw) {
-      try { setState({...initial,...JSON.parse(raw)}); } catch {}
+      try { const parsed={...initial,...JSON.parse(raw)}; requestAnimationFrame(() => setState(parsed)); } catch {}
     }
   },[]);
 
