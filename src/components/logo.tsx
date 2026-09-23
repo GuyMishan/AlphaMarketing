@@ -1,12 +1,17 @@
 export function AlphaLogo() {
   return (
-    <div className="logo" aria-label="ALPHA תפעול פנסיוני">
+    <div className="logo" aria-label="ALPHA - תפעול פנסיוני">
       <span className="logo-mark" aria-hidden="true">
-        <svg viewBox="0 0 48 48">
-          <path d="M9.5 35.7 20.8 15.9c1.35-2.35 4.73-2.35 6.08 0l11.62 19.8H31.1L23.82 23.3 16.7 35.7H9.5Z" />
+        <svg viewBox="0 0 48 48" role="img" focusable="false">
+          <rect className="brand-logo-tile" x="1" y="1" width="46" height="46" rx="12" />
+          <path className="brand-logo-symbol" d="M10.2 35.5 21.35 15.9c1.18-2.08 4.12-2.08 5.3 0L37.8 35.5a2.15 2.15 0 0 1-1.88 3.22h-3.56L24 23.96l-8.36 14.76h-3.56a2.15 2.15 0 0 1-1.88-3.22Z" />
+          <path className="brand-logo-symbol brand-logo-symbol-inner" d="M20.38 35.02 24 28.66l3.62 6.36a1.42 1.42 0 0 1-1.24 2.12h-4.76a1.42 1.42 0 0 1-1.24-2.12Z" />
         </svg>
       </span>
-      <span>ALPHA<small>תפעול פנסיוני</small></span>
+      <span className="brand-copy">
+        <span className="brand-wordmark">ALPHA</span>
+        <span className="brand-tagline">תפעול פנסיוני</span>
+      </span>
     </div>
   );
 }
