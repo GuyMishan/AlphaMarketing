@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { ArrowLeft, Building2, CheckCircle2, FileCode2, FileSpreadsheet, LockKeyhole, MessagesSquare, RefreshCw, ShieldCheck, Sparkles, UploadCloud, UsersRound, WalletCards, Zap } from "lucide-react";
+import { ArrowLeft, Building2, CheckCircle2, FileCode2, FileSpreadsheet, LockKeyhole, MessagesSquare, RefreshCw, ShieldCheck, Sparkles, UsersRound, WalletCards, Zap } from "lucide-react";
 import { AlphaLogo } from "@/components/logo";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { AccessibilityWidget } from "@/components/accessibility-widget";
