@@ -6,7 +6,7 @@ import { ArrowLeft, BadgeCheck, Building2, CheckCircle2, CircleDollarSign, FileC
 import { AlphaLogo } from "@/components/logo";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { AccessibilityWidget } from "@/components/accessibility-widget";
-import { ContactModal } from "@/components/contact-modal";
+import { ContactModal, LeadSuccessModal } from "@/components/contact-modal";
 import { DashboardPreview } from "@/components/dashboard-preview";
 import { AudienceShowcase } from "@/components/audience-showcase";
 import { DeviceShowcase } from "@/components/device-showcase";
@@ -25,6 +25,7 @@ const navItems=[
 
 export function LandingPage() {
   const [contactOpen,setContactOpen]=useState(false);
+  const [successOpen,setSuccessOpen]=useState(false);
   const [activeSection,setActiveSection]=useState("");
   const open=()=>setContactOpen(true);
 
@@ -221,6 +222,7 @@ export function LandingPage() {
 
     <AccessibilityWidget/>
     <BackToTop/>
-    <ContactModal open={contactOpen} onClose={()=>setContactOpen(false)}/>
+    <ContactModal open={contactOpen} onClose={()=>setContactOpen(false)} onSuccess={()=>{ setContactOpen(false); setSuccessOpen(true); }}/>
+    <LeadSuccessModal open={successOpen} onClose={()=>setSuccessOpen(false)}/>
   </div>;
 }
