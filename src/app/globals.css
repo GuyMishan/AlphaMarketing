@@ -777,3 +777,11 @@ h1,h2,h3,.logo { font-family: var(--font-rubik), Arial, Helvetica, sans-serif; }
   .accessibility { left:12px;bottom:12px; }
   .accessibility-menu { width:min(250px,calc(100vw - 24px)); }
 }
+
+/* Theme toggle sizing */
+.theme-toggle-btn { padding: 0 !important; }
+.theme-toggle-btn svg { width: 26px; height: 26px; flex: 0 0 26px; }
+@media (max-width: 640px) {
+  .nav-actions .theme-toggle-btn { width: 42px; height: 42px; min-height: 42px; padding: 0 !important; }
+  .nav-actions .theme-toggle-btn svg { width: 27px; height: 27px; flex-basis: 27px; }
+}
