@@ -19,5 +19,5 @@ export function ThemeToggle() {
     localStorage.setItem("alpha-theme", next ? "dark" : "light");
   }
 
-  return <button className="btn btn-ghost icon-btn" onClick={toggle} aria-label={dark ? "מעבר למצב בהיר" : "מעבר למצב כהה"}>{dark ? <Sun size={22} strokeWidth={2.25}/> : <Moon size={22} strokeWidth={2.25}/>}</button>;
+  return <button className="btn btn-ghost icon-btn theme-toggle-btn" onClick={toggle} aria-label={dark ? "מעבר למצב בהיר" : "מעבר למצב כהה"}>{dark ? <Sun size={26} strokeWidth={2.25}/> : <Moon size={26} strokeWidth={2.25}/>}</button>;
 }
