@@ -15,7 +15,10 @@ export function LeadForm({ onSuccess }: { onSuccess?: () => void }) {
     setStatus("sending");
     setMessage("");
 
-    const form = new FormData(event.currentTarget);
+    // Keep the form element itself before the async request. React's event
+    // currentTarget is not guaranteed to remain available after an await.
+    const formElement = event.currentTarget;
+    const form = new FormData(formElement);
     const payload = {
       fullName: String(form.get("fullName") || ""),
       phone: String(form.get("phone") || ""),
@@ -36,7 +39,7 @@ export function LeadForm({ onSuccess }: { onSuccess?: () => void }) {
       const result = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(result.error || "שליחת הפרטים נכשלה.");
 
-      event.currentTarget.reset();
+      formElement.reset();
       setStatus("success");
       setMessage("תודה! הפרטים התקבלו. ניצור איתכם קשר בהקדם.");
       onSuccess?.();
