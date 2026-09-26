@@ -798,3 +798,23 @@ h1,h2,h3,.logo { font-family: var(--font-rubik), Arial, Helvetica, sans-serif; }
 @media(max-width:1100px){.alfi-hero{left:20px;top:150px}.alfi-hero img{width:110px}.alfi-hero span{display:none}}
 @media(max-width:760px){.alfi-hero{position:relative;left:auto;top:auto;justify-content:center;margin:10px auto -8px}.alfi-hero img{width:105px}.alfi-section-guide{width:100%;margin-top:24px}.alfi-section-guide img{width:68px}.alfi-cta{opacity:.32;left:-10px}.alfi-cta img{width:105px}}
 @media(prefers-reduced-motion:reduce){.alfi-hero{animation:none}}
+
+
+/* Alfi theme polish: all copy/bubbles remain live UI, never baked into imagery */
+.alfi-hero span,.alfi-section-guide{
+  color:var(--text);
+  background:color-mix(in srgb,var(--bg-elevated) 92%,transparent);
+  border-color:color-mix(in srgb,var(--brand) 24%,var(--line));
+  box-shadow:0 16px 44px color-mix(in srgb,var(--text) 10%,transparent);
+  backdrop-filter:blur(18px);
+}
+.alfi-section-guide span{color:var(--muted);opacity:1}
+[data-theme="dark"] .alfi-hero span,
+[data-theme="dark"] .alfi-section-guide{
+  background:color-mix(in srgb,#111b28 90%,transparent);
+  border-color:rgba(96,165,250,.25);
+  color:#f8fbff;
+  box-shadow:0 18px 48px rgba(0,0,0,.35);
+}
+[data-theme="dark"] .alfi-section-guide span{color:#aebdd0}
+.alfi-image{object-fit:contain}
