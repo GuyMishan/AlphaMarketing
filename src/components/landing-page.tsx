@@ -84,7 +84,7 @@ export function LandingPage() {
         <div className="hero-float hero-float-a"><FileCheck2 size={18}/><span>דיווח נקלט</span></div>
         <div className="hero-float hero-float-b"><UsersRound size={18}/><span>עובדים מסונכרנים</span></div>
         <div className="hero-float hero-float-c"><ShieldCheck size={18}/><span>בדיקות תקינות</span></div>
-        <div className="alfi-hero" aria-hidden="true"><Image src="/alfi/alfi.png" alt="" width={180} height={180} priority/><span>היי, אני אלפי 👋<br/>אני כאן כדי לעשות סדר.</span></div>
+        <div className="alfi-hero" aria-hidden="true"><Image src="/alfi/alfi.png" alt="" width={180} height={180} priority className="alfi-image"/><span>היי, אני אלפי 👋<br/>אני כאן כדי לעשות סדר.</span></div>
         <div className="container hero-copy reveal is-visible">
           <span className="eyebrow"><Sparkles size={14}/>הדור החדש של התפעול הפנסיוני</span>
           <h1>תפעול פנסיוני.<br/><span>פשוט יותר.</span></h1>
@@ -118,7 +118,7 @@ export function LandingPage() {
             <h2 className="section-title">כל מה שצריך לדיווח פנסיוני,<br/>במערכת אחת.</h2>
             <p className="section-copy">במקום קבצים מפוזרים, מעקבים ידניים ושאלות של “מה קרה עם הדיווח?”, ALPHA מחברת את כל שלבי העבודה לרצף אחד ברור.</p>
           </div>
-          <div className="alfi-section-guide reveal"><Image src="/alfi/alfi.png" alt="אלפי, העוזר החכם של ALPHA" width={108} height={108}/><div><b>אלפי עושה לכם סדר</b><span>דיווח, בדיקה, משוב ותיקון — בלי ללכת לאיבוד בדרך.</span></div></div>
+          <div className="alfi-section-guide reveal"><Image src="/alfi/alfi.png" alt="אלפי, העוזר החכם של ALPHA" width={108} height={108} className="alfi-image"/><div><b>אלפי עושה לכם סדר</b><span>דיווח, בדיקה, משוב ותיקון — בלי ללכת לאיבוד בדרך.</span></div></div>
           <div className="feature-grid">
             <article className="feature-card large reveal"><div className="feature-icon"><FileSpreadsheet/></div><div className="feature-art file-art"><Upload/><span>Excel</span><FileCode2/></div><h3>דיווח בדרך שנוחה לכם</h3><p>ידני, Excel או XML 006 — שלוש דרכים שונות שנכנסות לאותו תהליך אחיד של בדיקות, סיכום ושליחה.</p></article>
             <article className="feature-card reveal"><div className="feature-icon"><UsersRound/></div><div className="mini-stack"><span/><span/><span/></div><h3>עובדים ותמהילים</h3><p>ניהול פרטי העובד, המוצרים הפנסיוניים, שיעורי ההפרשות והשכר במקום אחד.</p></article>
@@ -189,7 +189,7 @@ export function LandingPage() {
       <section className="section section-large cta-section">
         <div className="container reveal">
           <div className="cta-panel">
-            <div className="alfi-cta" aria-hidden="true"><Image src="/alfi/alfi.png" alt="" width={150} height={150}/></div>
+            <div className="alfi-cta" aria-hidden="true"><Image src="/alfi/alfi.png" alt="" width={150} height={150} className="alfi-image"/></div>
             <div className="cta-spark spark-a"/><div className="cta-spark spark-b"/>
             <h2>רוצים לראות איך ALPHA עובדת אצלכם?</h2>
             <p>השאירו לנו פרטים וניצור איתכם קשר. אם אתם מעסיק עם עד 3 עובדים, תוכלו להתחיל ללא עלות.</p>
