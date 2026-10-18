@@ -29,3 +29,5 @@
 
 ## CI
 - `.github/workflows/ci.yml` runs lint, typecheck and build on Node 22.
+
+- `src/app/legal/page.tsx` — public canonical legal policy page, server-fetching the active published version from AlphaBACKEND via `src/lib/legal-document.ts`. `/terms` and `/privacy` redirect here to avoid duplicate documents; accessibility statement remains at `/accessibility`.
