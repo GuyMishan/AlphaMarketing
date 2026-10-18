@@ -1,3 +1,4 @@
+import { LegalMarkdown } from "@/components/legal-markdown";
 import { LegalShell } from "@/components/legal-shell";
 import { getActiveLegalDocument } from "@/lib/legal-document";
 
@@ -15,7 +16,7 @@ export default async function LegalPage() {
     {document ? <>
       <h2>{document.title}</h2>
       <p>גרסה {document.version} · פורסם {date(document.publishedAt)} · בתוקף מ־{date(document.effectiveAt)}</p>
-      <div dir="auto" style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere", lineHeight: 1.9 }}>{document.markdown}</div>
+      <LegalMarkdown markdown={document.markdown} />
     </> : <p role="status">המסמך המשפטי אינו זמין כרגע, או שטרם פורסמה גרסה מאושרת.</p>}
   </LegalShell>;
 }
