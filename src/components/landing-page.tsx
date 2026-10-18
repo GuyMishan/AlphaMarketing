@@ -214,7 +214,7 @@ export function LandingPage() {
         <div className="footer-grid">
           <div><AlphaLogo/><p>מערכת חכמה לניהול ותפעול דיווחים פנסיוניים למעסיקים וארגונים.</p><p><a href="mailto:Alphapensia@gmail.com">Alphapensia@gmail.com</a></p></div>
           <div><b>ALPHA</b><div className="footer-links"><a href="#audience">למי זה מתאים</a><a href="#product">המוצר</a><a href="#showcase">המערכת</a><a href="#how">איך זה עובד</a><a href="#faq">שאלות נפוצות</a><a href={appUrl + "/login"}>כניסה למערכת</a></div></div>
-          <div><b>מידע משפטי</b><div className="footer-links"><Link href="/terms">תקנון ותנאי שימוש</Link><Link href="/privacy">מדיניות פרטיות</Link><Link href="/accessibility">הצהרת נגישות</Link></div></div>
+          <div><b>מידע משפטי</b><div className="footer-links"><Link href="/legal">מדיניות ומידע משפטי</Link><Link href="/accessibility">הצהרת נגישות</Link></div></div>
         </div>
         <div className="footer-bottom"><span>© {new Date().getFullYear()} ALPHA. כל הזכויות שמורות.</span><span>תפעול פנסיוני, פשוט יותר.</span></div>
       </div>
