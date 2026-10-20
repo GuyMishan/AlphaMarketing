@@ -520,7 +520,7 @@ h1,h2,h3,.logo { font-family: var(--font-rubik), Arial, Helvetica, sans-serif; }
 .ambient-four { width:560px;height:560px;background:#5c91ff;bottom:-220px;left:22%;animation:ambient-four 22s ease-in-out infinite alternate;opacity:.13; }
 
 .section { position:relative; }
-.section-large { padding: 150px 0; min-height:760px; display:flex; align-items:center; }
+.section-large { padding: 80px 0; min-height:760px; display:flex; align-items:center; }
 .section-heading-centered { text-align:center; max-width:920px; margin:0 auto 54px; }
 .section-copy.centered { margin-inline:auto; }
 .section-aurora {
@@ -669,12 +669,12 @@ h1,h2,h3,.logo { font-family: var(--font-rubik), Arial, Helvetica, sans-serif; }
   .devices-canvas { min-height:600px; }
 }
 @media (max-width: 900px) {
-  .section-large { padding:110px 0;min-height:auto; }
+  .section-large { padding:80px 0;min-height:auto; }
   .audience-panel { grid-template-columns:1fr; }
   .audience-visual { min-height:360px; }
 }
 @media (max-width: 640px) {
-  .section-large { padding:88px 0; }
+  .section-large { padding:80px 0; }
   .audience-tabs { grid-template-columns:repeat(2,1fr); }
   .audience-tab { min-height:56px;font-size:12px; }
   .audience-panel { padding:16px;border-radius:22px; }
