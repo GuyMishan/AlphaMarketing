@@ -7,7 +7,7 @@ export function LegalShell({ children }: { children: React.ReactNode }) {
   return <>
     <header className="site-header">
       <div className="container nav">
-        <Link href="/"><AlphaLogo/></Link>
+        <Link href="/"><AlphaLogo showTagline={false}/></Link>
         <div className="nav-actions"><ThemeToggle/><Link className="btn btn-ghost" href="/">חזרה לאתר</Link></div>
       </div>
     </header>
