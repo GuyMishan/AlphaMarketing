@@ -64,7 +64,7 @@ export function LandingPage() {
 
     <header className="site-header">
       <div className="container nav">
-        <a className="nav-brand" href="#top" aria-label="ALPHA - חזרה לראש העמוד"><AlphaLogo/></a>
+        <a className="nav-brand" href="#top" aria-label="ALPHA - חזרה לראש העמוד"><AlphaLogo showTagline={false}/></a>
         <nav className="nav-links" aria-label="ניווט ראשי">
           {navItems.map(item=><a key={item.id} className={activeSection===item.id?"active":""} href={"#"+item.id}><span/>{item.label}</a>)}
         </nav>
