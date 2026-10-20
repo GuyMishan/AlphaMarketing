@@ -44,9 +44,9 @@ export function AlphaLogoMark({ className, title = "ALPHA" }: { className?: stri
 }
 
 /** Shared product lockup, identical to the application logo and tagline. */
-export function AlphaLogo() {
+export function AlphaLogo({ showTagline = true }: { showTagline?: boolean } = {}) {
   return <div className="brand">
     <AlphaLogoMark className="brand-logo" />
-    <span className="brand-tagline">תפעול פנסיוני</span>
+    {showTagline ? <span className="brand-tagline">תפעול פנסיוני</span> : null}
   </div>;
 }
